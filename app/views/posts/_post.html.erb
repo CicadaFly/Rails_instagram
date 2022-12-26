@@ -1,0 +1,40 @@
+<div id="<%= dom_id post %>">
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <% post.images.each do |image| %>
+    <%= link_to 'image_filename', image %>
+    <%= image_tag image %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Longitude:</strong>
+    <%= post.longitude %>
+  </p>
+
+  <p>
+    <strong>Lattitude:</strong>
+    <%= post.lattitude %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= post.user_id %>
+  </p>
+
+  <p>
+    <strong>Allow to comment:</strong>
+    <%= post.allow_to_comment %>
+  </p>
+
+  <p>
+    <strong>Show likes:</strong>
+    <%= post.show_likes %>
+  </p>
+
+</div>
