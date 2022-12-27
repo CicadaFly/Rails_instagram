@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
+  has_one_attached :profile_pic
   # class_name: "post", foreign_key: "reference_id"
 end
