@@ -5,11 +5,17 @@
   </p>
 
   <p>
-    <strong>Image:</strong>
-    <% post.images.each do |image| %>
-    <%= link_to 'image_filename', image %>
-    <%= image_tag image %>
+  <div class="card" style="width: 28rem;">
+    <div class="card-header">
+      Featured
+    </div>
+    <% post.images.each do |image|%>
+      <%= image_tag image, class: "card-img-top" %>
     <% end %>
+    <div class="card-body">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
   </p>
 
   <p>
