@@ -1,33 +1,49 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item">
-    <%= link_to 'Home', root_path, class:'nav-link active' %>
-    <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
-    </li>
-    <li class="nav-item">
-    <%= link_to 'User', root_path, class:'nav-link active' %>
-    </li>
-    <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-    </li>
-      <li class="nav-item">
-      <a class="nav-link disabled">Disabled</a>
-      </li>
-    </ul>
+<nav class="navbar navbar-expand-lg bg-light sticky-top bg-white border-bottom" style="border-color: #afafaf">
+  <div class="container-fluid w-75">
+    <%= link_to 'Railstagram' ,root_path, class: "fw-bold fs-3 text-muted", style: "text-decoration: none; font-style: oblique" %> 
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="d-flex">
+      <div class="collapse navbar-collapse me-5" id="navbarSupportedContent">
+
+      </div>
+
+      <div class="navbar-collapse gap-4">
+        <%=  link_to root_path, class: "text-dark" do %> <i class="fa-solid fa-house fa-xl"></i> <% end %>
+        <i class="fa-brands fa-facebook-messenger fa-xl"></i>
+        <a type="button" class="text-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <i class="fa-regular fa-square-plus fa-xl"></i>
+        </a>
+        <i class="fa-regular fa-compass fa-xl"></i>
+<%# ------------------------------------------------------------------------------ %>
+        <div class="dropstart">
+          <i class="fa-regular fa-heart fa-xl" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        </div>
+        <div class="dropdown">
+          <a class="" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if current_user && current_user.profile_pic.attached? %>
+              <%= image_tag current_user.profile_pic, class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
+            <% else %>
+              <%= image_tag 'default_head.png', class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
+            <% end %>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to 'Profile', root_path, class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to 'Settings', edit_user_registration_path, class: "dropdown-item" %>
+            </li>
+            <li>
+              <%= button_to 'Log out', destroy_user_session_path, class: "dropdown-item", method: :delete%>
+            </li>
+          </ul>
+        </div>
+<%# ------------------------------------------------------------------------------ %>  
+      </div>
     </div>
   </div>
 </nav>
+
+<%= render 'posts/form', post: Post.new %>

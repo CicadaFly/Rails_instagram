@@ -1,45 +1,12 @@
-<div class= "container home-sections d-flex flex-row justify-content-center align-items-center">
-  <div class= "image-section pt-3 d-none d-lg-block"> </div>
-
-  <div class= "login-section pt-3">
-    <div class= "card text-center pt-5" > 
-      <%= image_tag("logo.png", height: "40%", class: "align-self-center")%>
-      <div class= "card-body">
-        <div class= "mb-3 mt-4">
-          <input type= "email" class= "form-control" id= "email" placeholder= "Enter your phone number, username, or e-mail">
-        </div>
-        <div class= "mb-3">
-          <input type= "password" class= "form-control" id= "password" placeholder= "Enter your password">
-        </div>
-        <a href="#" class= "btn btn-primary w-100">Log in</a>
-        <%# 上面是登入用 %>
-        <div class= "d-flex align-items-center mt-4">
-          <div class= "line"></div>
-          <div class= "line-text">OR</div>
-          <div class= "line"></div>
-        </div>
-        <a href="#" class="d-block mt-4 text-decoration-none fw-bold">
-          <%= image_tag("facebook.png",width: "10%", class:  "facebook") %>
-          Log in with Facebook
-        </a>
-        <% if notice %>
-          <p class="notice"><%=notice %></p>
-            <% elsif alert %>
-          <p class="alert"><%= alert %></p>
-        <% end %>
-      </div>
-    </div>
-      <div class="card text-center py-2 mt-3 mx-auto" style="width: 23rem;">
-      <div class="card-text">
-        havn't have an account? 
-        <%= link_to  "Sign up", new_user_registration_path, class: "fs-6 my-4 text-decoration-none text-info" %>
-      </div>
+<%= render "layouts/flash_messages" %>
+<div class= "d-flex my-5 justify-content-center gap-5">
+  <div class= "d-flex flex-column gap-3">
+    <%= render 'story/story_list' %>
+      <div class = "flex flex-column">
+      <% current_user.posts.each do |p| %>
+        <%= render 'posts/post', post: p %>
+      <% end %>
       </div>
   </div>
+   <%= render 'suggestions/suggestion_list' %>
 </div>
-
-
-<% if current_user %>
-  <%= button_to "Log Out", destroy_user_session_path, method: :delete %>
-<% end %>
-

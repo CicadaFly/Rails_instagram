@@ -1,3 +1,4 @@
+<%= render "layouts/flash_messages" %>
 <div class= "container home-sections d-flex flex-row justify-content-center align-items-center">
   <div class= "image-section pt-3 d-none d-lg-block"> </div>
 
@@ -30,6 +31,7 @@
           <%= image_tag("facebook.png",width: "10%", class:  "facebook") %>
           Log in with Facebook
         </a>
+
         <% if notice %>
           <p class="notice"><%=notice %></p>
             <% elsif alert %>

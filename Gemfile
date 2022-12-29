@@ -74,3 +74,6 @@ group :test do
 end
 
 gem "devise", "~> 4.8"
+
+gem "font-awesome-sass", "~> 6.2.1"
+gem 'activestorage-validator'
