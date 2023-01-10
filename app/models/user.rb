@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_one_attached :profile_pic
   # class_name: "post", foreign_key: "reference_id"
   has_many :likes
+  has_many :comments
 end
