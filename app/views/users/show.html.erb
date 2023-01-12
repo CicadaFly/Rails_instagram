@@ -1,0 +1,6 @@
+<%= render 'users/user_header', user: @user %>
+<% if !@user.private || @user == current_user  %>
+  <%= render 'users/user_post', user: @user %>
+<% else %>
+  <%= render 'users/user_private' %>
+<% end%>
